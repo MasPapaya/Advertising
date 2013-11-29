@@ -1,4 +1,4 @@
 Advertising
 ===========
 
-CakePHP Plugin, require "Configurations", "Resources" plugins
+CakePHP Plugin, require "Configurations", "Resources", "Accounts" plugins
