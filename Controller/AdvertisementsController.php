@@ -1,7 +1,4 @@
 <?php
-
-App::uses('AdvertisingAppController', 'Advertising.Controller');
-
 /**
  * Advertisements Controller
  *
@@ -14,6 +11,8 @@ class AdvertisementsController extends AdvertisingAppController {
 	 * @var type
 	 */
 	public $components = array();
+	
+	public $uses = array('Advertising.Advertisement');
 
 	function beforeFilter() {
 		parent::beforeFilter();

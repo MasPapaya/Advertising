@@ -1,5 +1,8 @@
 <?php
-App::uses('AdvertisingAppModel', 'Advertising.Model');
+
+//App::uses('AppModel', 'Model');
+//App::uses('AdvertisingAppModel', 'Advertising.Model');
+
 /**
  * BlocksAdvertisement Model
  *
@@ -8,33 +11,33 @@ App::uses('AdvertisingAppModel', 'Advertising.Model');
  * @property Click $Click
  * @property Impression $Impression
  */
-class BlocksAdvertisement extends AdvertisingAppModel{
+class BlocksAdvertisement extends AdvertisingAppModel {
 
-/**
- * Display field
- *
- * @var string
- */
+	/**
+	 * Display field
+	 *
+	 * @var string
+	 */
 	public $displayField = 'id';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-/**
- * belongsTo associations
- *
- * @var array
- */
+	/**
+	 * belongsTo associations
+	 *
+	 * @var array
+	 */
 	public $belongsTo = array(
 		'Block' => array(
-			'className' => 'Block',
+			'className' => 'Advertising.Block',
 			'foreignKey' => 'block_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
 		'Advertisement' => array(
-			'className' => 'Advertisement',
+			'className' => 'Advertising.Advertisement',
 			'foreignKey' => 'advertisement_id',
 			'conditions' => '',
 			'fields' => '',
@@ -42,11 +45,11 @@ class BlocksAdvertisement extends AdvertisingAppModel{
 		)
 	);
 
-/**
- * hasMany associations
- *
- * @var array
- */
+	/**
+	 * hasMany associations
+	 *
+	 * @var array
+	 */
 	public $hasMany = array(
 		'Click' => array(
 			'className' => 'Click',
@@ -75,5 +78,5 @@ class BlocksAdvertisement extends AdvertisingAppModel{
 			'counterQuery' => ''
 		)
 	);
-	
+
 }

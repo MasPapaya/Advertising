@@ -1,6 +1,6 @@
 <?php
 
-App::uses('AdvertisingAppModel', 'Advertising.Model');
+App::uses('AppModel', 'Model');
 
 /**
  * Block Model
@@ -131,6 +131,23 @@ class Block extends AdvertisingAppModel {
 	    ),
 	),
     );
+	
+	
+	public $hasMany = array(
+		'BlocksAdvertisement' => array(
+			'className' => 'BlocksAdvertisement',
+			'foreignKey' => 'block_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 

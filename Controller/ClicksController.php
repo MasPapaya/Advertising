@@ -1,13 +1,12 @@
 <?php
-
-App::uses('AdvertisingAppController', 'Advertising.Controller');
-
 /**
  * Clicks Controller
  *
  * @property Click $Click
  */
 class ClicksController extends AdvertisingAppController {
+
+	public $uses = array('Advertising.Click');
 
 	function beforeFilter() {
 		parent::beforeFilter();

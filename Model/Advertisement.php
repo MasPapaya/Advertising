@@ -1,7 +1,5 @@
 <?php
 
-App::uses('AdvertisingAppModel', 'Advertising.Model');
-
 /**
  * Advertisement Model
  *
@@ -103,7 +101,7 @@ class Advertisement extends AdvertisingAppModel {
 	 */
 	public $hasAndBelongsToMany = array(
 		'Block' => array(
-			'className' => 'Block',
+			'className' => 'Advertising.Block',
 			'joinTable' => 'blocks_advertisements',
 			'foreignKey' => 'advertisement_id',
 			'associationForeignKey' => 'block_id',

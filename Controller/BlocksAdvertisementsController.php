@@ -1,7 +1,5 @@
 <?php
 
-App::uses('AdvertisingAppController', 'Advertising.Controller');
-
 /**
  * BlocksAdvertisements Controller
  *
@@ -9,12 +7,16 @@ App::uses('AdvertisingAppController', 'Advertising.Controller');
  */
 class BlocksAdvertisementsController extends AdvertisingAppController {
 
+	
+	public $uses = array('Advertising.BlocksAdvertisement');
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->deny();
 //		$this->Auth->allow('public_show','show','register_click');
 		$this->Auth->allow();
 	}
+	
+	
 
 	/**
 	 * cargamos componentes
@@ -47,18 +49,32 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	public function admin_advertisements($block) {
 		if (!isset($block) || is_null($block) || empty($block)) {
 			throw new MethodNotAllowedException();
-		}
-
+		}		
+		$this->BlocksAdvertisement->bindModel(array('belongsTo' => array('Block')));
+		$this->BlocksAdvertisement->bindModel(array('hasMany' => array('Click', 'Impression')));
 		$this->paginate = array(
 			'recursive' => 1,
 			'fields' => array('Advertisement.*'),
 			'limit' => 10,
 //			'order' => array(),
 			'conditions' => array(
-				'Advertisement.deleted <=' => '1800-01-01 00:00:00',
 				'BlocksAdvertisement.block_id' => $block,
+			),
+			'joins' => array(
+				array(
+					'alias' => 'Advertisement',
+					'table' => 'advertisements',
+					'type' => 'INNER',
+					'conditions' => array(
+						'Advertisement.deleted = '.'"'.Configure::read('zero_datetime').'"',
+					),
+				),
 			)
 		);
+		
+		
+				
+
 		$this->set('advertisements', $this->paginate());
 	}
 
@@ -74,6 +90,8 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 			throw new MethodNotAllowedException();
 		}
 
+		$this->BlocksAdvertisement->bindModel(array('belongsTo' => array('Block')));
+		$this->BlocksAdvertisement->bindModel(array('hasMany' => array('Click', 'Impression')));
 		$this->paginate = array(
 			'recursive' => 1,
 			'fields' => array('Block.*'),
@@ -83,7 +101,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 				'BlocksAdvertisement.advertisement_id' => $advertisements,
 			)
 		);
-
+//
 		$this->set('blocks', $this->paginate());
 	}
 
@@ -221,6 +239,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	 */
 	public function register_click($block_advertisement_id = null) {
 		$this->loadModel('Advertising.ViewBlocksAdvertisement');
+		$this->loadModel('Advertising.Click');
 
 		$BlocksAdvertisement = $this->ViewBlocksAdvertisement->find('first', array(
 			'conditions' => array(
@@ -232,8 +251,8 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
 		}
 
-		$this->BlocksAdvertisement->Click->create();
-		$this->BlocksAdvertisement->Click->save(array(
+		$this->Click->create();
+		$this->Click->save(array(
 			'Click' => array(
 				'ip' => $this->request->clientIp(),
 				'user_agent' => $this->request->header('User-Agent'),

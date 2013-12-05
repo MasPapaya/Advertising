@@ -1,10 +1,8 @@
 <?php
-
-App::uses('AdvertisingAppModel', 'Advertising.Model');
 /**
  * Click Model
  *
- * @property BlocksAdvertisement $BlocksAdvertisement
+ * @property Click $Click
  */
 class Click extends AdvertisingAppModel{
 
@@ -62,7 +60,7 @@ class Click extends AdvertisingAppModel{
  */
 	public $belongsTo = array(
 		'BlocksAdvertisement' => array(
-			'className' => 'BlocksAdvertisement',
+			'className' => 'Advertising.BlocksAdvertisement',
 			'foreignKey' => 'blocks_advertisement_id',
 			'conditions' => '',
 			'fields' => '',
