@@ -198,8 +198,9 @@ class ToolsHelper extends AppHelper {
 		</a>		
 	</div>	';
 		endif;
-
-		$this->Js->buffer($script, true);
+		if (!empty($script)) {
+			$this->Js->buffer($script, true);
+		}
 	}
 
 }
