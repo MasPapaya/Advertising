@@ -82,10 +82,7 @@ class ToolsHelper extends AppHelper {
 
 		$block = array();
 		$block['Block'] = $BlocksAdvertisement['Block'];
-		unset($BlocksAdvertisement['Block']);
-
-
-
+		unset($BlocksAdvertisement['Block']);				
 		if ((bool) $block['Block']['multiple']):
 
 			if ($block['Block']['orientation'] == '1'):
@@ -192,11 +189,13 @@ class ToolsHelper extends AppHelper {
 
 			$script.= '});';
 		else:
+			if(!empty($BlocksAdvertisement["ViewBlocksAdvertisement"]["Resource"]["ViewResourceGroup"]["resource_filename"])):
 			echo '<div style="' . $this->Html->style(array("height" => $block["Block"]["height"] . "px", "width" => $block["Block"]["width"] . "px")) . '">		
 		<a href="' . $this->Html->url(array("plugin" => "advertising", "controller" => "BlocksAdvertisements", "action" => "register_click", $BlocksAdvertisement["ViewBlocksAdvertisement"]["id"]), true) . '" target="' . $BlocksAdvertisement['ViewBlocksAdvertisement']["advertisement_taget"] . '">
 			' . $this->Html->image("/files/" . $BlocksAdvertisement["ViewBlocksAdvertisement"]["Resource"]["Entity"]["folder"] . "/" . $BlocksAdvertisement["ViewBlocksAdvertisement"]["Resource"]["ViewResourceGroup"]["resource_filename"], array("border" => "0")) . '
 		</a>		
-	</div>	';
+			</div>	';
+			endif;
 		endif;
 		if (!empty($script)) {
 			$this->Js->buffer($script, true);
