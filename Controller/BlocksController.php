@@ -73,6 +73,7 @@ class BlocksController extends AdvertisingAppController {
 		if (!$this->Block->exists($id)) {
 			throw new NotFoundException(__d('publicity', 'Invalid block'));
 		}
+		$this->loadModel('Advertising.Advertisement');
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Block->save($this->request->data)) {
 				$this->Session->setFlash(__d('publicity', 'The block has been saved'), 'flash/success');
@@ -84,7 +85,7 @@ class BlocksController extends AdvertisingAppController {
 			$options = array('conditions' => array('Block.' . $this->Block->primaryKey => $id));
 			$this->request->data = $this->Block->find('first', $options);
 		}
-		$advertisements = $this->Block->Advertisement->find('list');
+		$advertisements = $this->Advertisement->find('list');
 		$this->set(compact('advertisements'));
 	}
 
