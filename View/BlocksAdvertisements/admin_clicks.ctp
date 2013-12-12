@@ -1,5 +1,5 @@
 <div class="span12">
-	<h3><?php echo __d('publicity','Clicks'); ?></h3>
+	<h3><?php echo __d('advertising','Clicks'); ?></h3>
 	<?php
 		$this->Paginator->options(array(
 			'update'		=> '#detail-ba',

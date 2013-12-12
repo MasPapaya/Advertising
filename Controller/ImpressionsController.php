@@ -26,7 +26,7 @@ class ImpressionsController extends AdvertisingAppController {
  */
 	public function admin_view($id = null) {
 		if (!$this->Impression->exists($id)) {
-			throw new NotFoundException(__d('publicity','Invalid impression'));
+			throw new NotFoundException(__d('advertising','Invalid impression'));
 		}
 		$options = array('conditions' => array('Impression.' . $this->Impression->primaryKey => $id));
 		$this->set('impression', $this->Impression->find('first', $options));
@@ -41,10 +41,10 @@ class ImpressionsController extends AdvertisingAppController {
 		if ($this->request->is('post')){
 			$this->Impression->create();
 			if ($this->Impression->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity','The impression has been saved'),'flash/success');
+				$this->Session->setFlash(__d('advertising','The impression has been saved'),'flash/success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity','The impression could not be saved. Please, try again.'),'flash/error');
+				$this->Session->setFlash(__d('advertising','The impression could not be saved. Please, try again.'),'flash/error');
 			}
 		}
 		$blocksAdvertisements = $this->Impression->BlocksAdvertisement->find('list');
@@ -60,14 +60,14 @@ class ImpressionsController extends AdvertisingAppController {
  */
 	public function admin_edit($id = null) {
 		if (!$this->Impression->exists($id)) {
-			throw new NotFoundException(__d('publicity','Invalid impression'));
+			throw new NotFoundException(__d('advertising','Invalid impression'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Impression->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity','The impression has been saved'),'flash/success');
+				$this->Session->setFlash(__d('advertising','The impression has been saved'),'flash/success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity','The impression could not be saved. Please, try again.'),'flash/error');
+				$this->Session->setFlash(__d('advertising','The impression could not be saved. Please, try again.'),'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('Impression.' . $this->Impression->primaryKey => $id));
@@ -87,14 +87,14 @@ class ImpressionsController extends AdvertisingAppController {
 	public function admin_delete($id = null) {
 		$this->Impression->id = $id;
 		if (!$this->Impression->exists()) {
-			throw new NotFoundException(__d('publicity','Invalid impression'));
+			throw new NotFoundException(__d('advertising','Invalid impression'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Impression->delete()) {
-			$this->Session->setFlash(__d('publicity','Impression deleted'),'flash/success');
+			$this->Session->setFlash(__d('advertising','Impression deleted'),'flash/success');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__d('publicity','Impression was not deleted'),'flash/error');
+		$this->Session->setFlash(__d('advertising','Impression was not deleted'),'flash/error');
 		$this->redirect(array('action' => 'index'));
 	}
 }

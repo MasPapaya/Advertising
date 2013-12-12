@@ -1,152 +1,155 @@
-# LANGUAGE translation of CakePHP Application
-# Copyright YEAR NAME <EMAIL@ADDRESS>
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: Plugin Advertising 0.0.0\n"
 "POT-Creation-Date: 2013-08-28 11:59-0500\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Luis Miguel <luis.cardenas@maspapaya.net>\n"
+"Language-Team: MasPapaya <alejandro.rodriguez@maspapaya.net>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-
-
+"Plural-Forms: nplurals=2;plural=(n>1)\n"
+"X-Poedit-Language: español\n"
+"X-Poedit-Country: COLOMBIA\n"
 
 #: Controller/AdvertisementsController.php:44;87;119
 msgid "Invalid advertisement"
-msgstr ""
+msgstr "anuncio inválido"
 
 #: Controller/AdvertisementsController.php:125
 msgid "Advertisement deleted"
-msgstr ""
+msgstr "Anuncio eliminado"
 
 #: Controller/AdvertisementsController.php:127
 msgid "Advertisement was not deleted"
-msgstr ""
+msgstr "Anuncio no fue eliminado"
 
 #: Controller/AdvertisementsController.php:148
 msgid "Invalid Advertisement"
-msgstr ""
+msgstr "Anuncio inválido"
 
 #: Controller/AdvertisementsController.php:172
 msgid "The advertisement has been saved"
-msgstr ""
+msgstr "EL anuncio fue guardado."
 
 #: Controller/AdvertisementsController.php:223
 msgid "The Advertisement has been saved in block %s "
-msgstr ""
+msgstr "El anuncio fue guardado en el bloque %s"
 
 #: Controller/AdvertisementsController.php:227
 msgid "The advertisement has been saved, but the block \"%s\" does not allow the size of the Advertisement"
-msgstr ""
+msgstr "El anuncio fue guardado, pero el bloque \"%s\" no permite el tamaño de la publicidad"
 
 #: Controller/AdvertisementsController.php:232
 msgid "The Advertisement height exceeds the limit of the block( %s ) "
-msgstr ""
+msgstr "El el alto del anuncio supera el limite del bloque( %s )  "
 
 #: Controller/AdvertisementsController.php:237
 msgid "The Advertisement width exceeds the limit of the block( %s )"
-msgstr ""
+msgstr "El ancho del anuncio supera el limite del bloque( %s )"
 
 #: Controller/AdvertisementsController.php:242
 msgid "The block does not exist"
-msgstr ""
+msgstr "bloque no existe"
 
 #: Controller/AdvertisementsController.php:262
 msgid "The advertisement could not be saved. Please, try again."
-msgstr ""
+msgstr "El anuncio no se pudo guardar. Inténtelo nuevamente"
 
 #: Controller/BlocksAdvertisementsController.php:90;125;153;172;191;223
 msgid "Invalid blocks advertisement"
-msgstr ""
+msgstr "bloque de anuncios incorrecto"
 
 #: Controller/BlocksAdvertisementsController.php:105;129
 msgid "The blocks advertisement has been saved"
-msgstr ""
+msgstr "El bloque de anuncios fue guardado"
 
 #: Controller/BlocksAdvertisementsController.php:108;132
 msgid "The blocks advertisement could not be saved. Please, try again."
-msgstr ""
+msgstr "El bloque de anuncios no se puedo guardar. Por favor, Inténtelo nuevamente."
 
 #: Controller/BlocksAdvertisementsController.php:157
 msgid "Blocks advertisement deleted"
-msgstr ""
+msgstr "Bloque de anuncios eliminado"
+
+msgid "Edit Block"
+msgstr "Editar Bloque"
+
+msgid "Add Block"
+msgstr "Nuevo Bloque"
 
 #: Controller/BlocksAdvertisementsController.php:160
 msgid "Blocks advertisement was not deleted"
-msgstr ""
+msgstr "Bloque de anuncios no fue eliminado"
 
 #: Controller/BlocksAdvertisementsController.php:251
 msgid "Invalid blocks advertisement - not existent"
-msgstr ""
+msgstr "Bloque de anuncios incorrecto"
 
 #: Controller/BlocksController.php:31;69;96
 msgid "Invalid block"
-msgstr ""
+msgstr "Bloque incorrecto"
 
 #: Controller/BlocksController.php:50;73
 msgid "The block has been saved"
-msgstr ""
+msgstr "EL bloque ha sido guardado"
 
 #: Controller/BlocksController.php:53;76
 msgid "The block could not be saved. Please, try again."
-msgstr ""
+msgstr "EL bloque no pudo ser guardado. Por favor, Inténtelo nuevamente"
 
 #: Controller/BlocksController.php:100
 msgid "Block deleted"
-msgstr ""
+msgstr "Bloque eliminado"
 
 #: Controller/BlocksController.php:103
 msgid "Block was not deleted"
-msgstr ""
+msgstr "Bloque no fue eliminado"
 
 #: Controller/BlocksController.php:117;132
 msgid "Invalid Block"
-msgstr ""
+msgstr "Bloque incorrecto"
 
 #: Controller/ClicksController.php:29;63;90
 msgid "Invalid click"
-msgstr ""
+msgstr "Click incorrecto"
 
 #: Controller/ClicksController.php:44;67
 msgid "The click has been saved"
-msgstr ""
+msgstr "El click fue registrado"
 
 #: Controller/ClicksController.php:47;70
 msgid "The click could not be saved. Please, try again."
-msgstr ""
+msgstr "EL clik no pudo ser guardado. Por favor inténtelo nuevamente"
 
 #: Controller/ClicksController.php:94
 msgid "Click deleted"
-msgstr ""
+msgstr "Click eliminado"
 
 #: Controller/ClicksController.php:97
 msgid "Click was not deleted"
-msgstr ""
+msgstr "Click no fue eliminado"
 
 #: Controller/ImpressionsController.php:29;63;90
 msgid "Invalid impression"
-msgstr ""
+msgstr "Impresion inválida"
 
 #: Controller/ImpressionsController.php:44;67
 msgid "The impression has been saved"
-msgstr ""
+msgstr "La impresion ha sido guardado."
 
 #: Controller/ImpressionsController.php:47;70
 msgid "The impression could not be saved. Please, try again."
-msgstr ""
+msgstr "La impresion no se pudo guardar, Por favor Inténtelo nuevamente."
 
 #: Controller/ImpressionsController.php:94
 msgid "Impression deleted"
-msgstr ""
+msgstr "Impresion eliminada."
 
 #: Controller/ImpressionsController.php:97
 msgid "Impression was not deleted"
-msgstr ""
+msgstr "Impresion no fue eliminada."
 
 #: View/Advertisements/admin_add.ctp:5
 #: View/Advertisements/admin_edit.ctp:5
@@ -154,16 +157,16 @@ msgstr ""
 #: View/BlocksAdvertisements/admin_edit.ctp:21
 #: View/BlocksAdvertisements/admin_view.ctp:30
 msgid "List Advertisements"
-msgstr ""
+msgstr "Lista de anuncios"
 
 #: View/Advertisements/admin_add.ctp:12
 msgid "Admin Add Advertisement"
-msgstr ""
+msgstr "Nuevo anuncios"
 
 #: View/Advertisements/admin_add.ctp:18
 #: View/Advertisements/admin_edit.ctp:19
 msgid "Select"
-msgstr ""
+msgstr "Seleccione"
 
 #: View/Advertisements/admin_add.ctp:40
 #: View/Advertisements/admin_edit.ctp:37
@@ -176,26 +179,24 @@ msgstr ""
 #: View/Impressions/admin_add.ctp:19
 #: View/Impressions/admin_edit.ctp:20
 msgid "Submit"
-msgstr ""
-
-
+msgstr "Enviar"
 
 #: View/Advertisements/admin_edit.ctp:12
 msgid "Admin Edit Advertisement"
-msgstr ""
+msgstr "Editar anuncio"
 
 #: View/Advertisements/admin_index.ctp:5
 #: View/BlocksAdvertisements/admin_add.ctp:20
 #: View/BlocksAdvertisements/admin_edit.ctp:22
 #: View/BlocksAdvertisements/admin_view.ctp:31
 msgid "New Advertisement"
-msgstr ""
+msgstr "Nuevo anuncio"
 
 #: View/Advertisements/admin_index.ctp:10
 #: View/BlocksAdvertisements/admin_advertisements.ctp:2
 #: View/Layouts/admin.ctp:64
 msgid "Advertisements"
-msgstr ""
+msgstr "Anuncios"
 
 #: View/Advertisements/admin_index.ctp:26
 #: View/Blocks/admin_index.ctp:27
@@ -210,7 +211,7 @@ msgstr ""
 #: View/Impressions/admin_index.ctp:18
 #: View/Impressions/admin_view.ctp:27
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: View/Advertisements/admin_index.ctp:44
 #: View/Blocks/admin_index.ctp:46
@@ -220,7 +221,7 @@ msgstr ""
 #: View/Clicks/admin_view.ctp:30
 #: View/Impressions/admin_view.ctp:30
 msgid "Are you sure you want to delete # %s?"
-msgstr ""
+msgstr "Esta seguro de querer eliminar %s ?"
 
 #: View/Advertisements/admin_view.ctp:5
 #: View/Blocks/admin_add.ctp:5
@@ -230,12 +231,12 @@ msgstr ""
 #: View/BlocksAdvertisements/admin_edit.ctp:19
 #: View/BlocksAdvertisements/admin_view.ctp:28
 msgid "List Blocks"
-msgstr ""
+msgstr "Lista de bloques"
 
 #: View/Advertisements/admin_view.ctp:10
 #: View/BlocksAdvertisements/admin_view.ctp:14
 msgid "Advertisement"
-msgstr ""
+msgstr "Anuncios"
 
 #: View/Advertisements/admin_view.ctp:12
 #: View/Blocks/admin_view.ctp:12
@@ -256,21 +257,21 @@ msgstr ""
 #: View/Advertisements/admin_view.ctp:27
 #: View/Blocks/admin_view.ctp:17
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: View/Advertisements/admin_view.ctp:32
 #: View/Blocks/admin_view.ctp:32
 msgid "Height"
-msgstr ""
+msgstr "Alto"
 
 #: View/Advertisements/admin_view.ctp:37
 #: View/Blocks/admin_view.ctp:37
 msgid "Width"
-msgstr ""
+msgstr "Ancho"
 
 #: View/Blocks/admin_add.ctp:12
 msgid "Admin Add Block"
-msgstr ""
+msgstr "Agregar Bloque"
 
 #: View/Blocks/admin_add.ctp:29;37;45
 #: View/Blocks/admin_edit.ctp:28;36;44
@@ -280,48 +281,48 @@ msgstr ""
 #: View/Blocks/admin_add.ctp:31
 #: View/Blocks/admin_edit.ctp:30
 msgid "static"
-msgstr ""
+msgstr "Estático"
 
 #: View/Blocks/admin_add.ctp:32
 #: View/Blocks/admin_edit.ctp:31
 msgid "animated"
-msgstr ""
+msgstr "Animado"
 
 #: View/Blocks/admin_add.ctp:39
 #: View/Blocks/admin_edit.ctp:38
 msgid "horizontally"
-msgstr ""
+msgstr "Horizontal"
 
 #: View/Blocks/admin_add.ctp:40
 #: View/Blocks/admin_edit.ctp:39
 msgid "vertically"
-msgstr ""
+msgstr "Vertical"
 
 #: View/Blocks/admin_edit.ctp:12
 msgid "Admin Edit Block"
-msgstr ""
+msgstr "Editar bloque"
 
 #: View/Blocks/admin_index.ctp:5
 #: View/BlocksAdvertisements/admin_add.ctp:18
 #: View/BlocksAdvertisements/admin_edit.ctp:20
 #: View/BlocksAdvertisements/admin_view.ctp:29
 msgid "New Block"
-msgstr ""
+msgstr "Nuevo Bloque"
 
 #: View/Blocks/admin_index.ctp:10
 #: View/BlocksAdvertisements/admin_blocks.ctp:2
 #: View/Layouts/admin.ctp:65
 msgid "Blocks"
-msgstr ""
+msgstr "Bloques"
 
 #: View/Blocks/admin_view.ctp:10
 #: View/BlocksAdvertisements/admin_view.ctp:9
 msgid "Block"
-msgstr ""
+msgstr "Bloque"
 
 #: View/Blocks/admin_view.ctp:22
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: View/Blocks/admin_view.ctp:27
 msgid "Multiple"
@@ -329,7 +330,7 @@ msgstr ""
 
 #: View/BlocksAdvertisements/admin_add.ctp:4
 msgid "Admin Add Blocks Advertisement"
-msgstr ""
+msgstr "Agregar bloque de anuncios"
 
 #: View/BlocksAdvertisements/admin_add.ctp:16
 #: View/BlocksAdvertisements/admin_edit.ctp:18
@@ -337,7 +338,7 @@ msgstr ""
 #: View/Clicks/admin_view.ctp:33
 #: View/Impressions/admin_view.ctp:33
 msgid "List Blocks Advertisements"
-msgstr ""
+msgstr "Listado de bloque de anuncios"
 
 #: View/BlocksAdvertisements/admin_add.ctp:21
 #: View/BlocksAdvertisements/admin_edit.ctp:23
@@ -346,7 +347,7 @@ msgstr ""
 #: View/Clicks/admin_edit.ctp:5
 #: View/Clicks/admin_view.ctp:31
 msgid "List Clicks"
-msgstr ""
+msgstr "Lista de clicks "
 
 #: View/BlocksAdvertisements/admin_add.ctp:22
 #: View/BlocksAdvertisements/admin_edit.ctp:24
@@ -354,7 +355,7 @@ msgstr ""
 #: View/Clicks/admin_index.ctp:5
 #: View/Clicks/admin_view.ctp:32
 msgid "New Click"
-msgstr ""
+msgstr "Nuevo click"
 
 #: View/BlocksAdvertisements/admin_add.ctp:23
 #: View/BlocksAdvertisements/admin_edit.ctp:25
@@ -363,7 +364,7 @@ msgstr ""
 #: View/Impressions/admin_edit.ctp:5
 #: View/Impressions/admin_view.ctp:31
 msgid "List Impressions"
-msgstr ""
+msgstr "Lista de impresiones"
 
 #: View/BlocksAdvertisements/admin_add.ctp:24
 #: View/BlocksAdvertisements/admin_edit.ctp:26
@@ -371,7 +372,7 @@ msgstr ""
 #: View/Impressions/admin_index.ctp:5
 #: View/Impressions/admin_view.ctp:32
 msgid "New Impression"
-msgstr ""
+msgstr "Nueva impression"
 
 #: View/BlocksAdvertisements/admin_advertisements.ctp:21
 #: View/BlocksAdvertisements/admin_blocks.ctp:21
@@ -385,67 +386,67 @@ msgstr ""
 #: View/BlocksAdvertisements/admin_impressions.ctp:2
 #: View/Impressions/admin_index.ctp:10
 msgid "Impressions"
-msgstr ""
+msgstr "Impresiones"
 
 #: View/BlocksAdvertisements/admin_advertisements.ctp:32
 #: View/BlocksAdvertisements/admin_index.ctp:39
 #: View/BlocksAdvertisements/admin_view.ctp:60;97
 msgid "View"
-msgstr ""
+msgstr "Visualizar"
 
 #: View/BlocksAdvertisements/admin_advertisements.ctp:43
 #: View/BlocksAdvertisements/admin_blocks.ctp:40
 msgid "Details Clicks"
-msgstr ""
+msgstr "Detalles de clicks"
 
 #: View/BlocksAdvertisements/admin_advertisements.ctp:44
 #: View/BlocksAdvertisements/admin_blocks.ctp:41
 msgid "Details Impressions"
-msgstr ""
+msgstr "Detalles de impresions"
 
 #: View/BlocksAdvertisements/admin_edit.ctp:4
 msgid "Admin Edit Blocks Advertisement"
-msgstr ""
+msgstr "Editar bloque de anuncio"
 
 #: View/BlocksAdvertisements/admin_edit.ctp:17
 #: View/BlocksAdvertisements/admin_index.ctp:41
 #: View/BlocksAdvertisements/admin_view.ctp:62;99
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: View/BlocksAdvertisements/admin_index.ctp:5
 #: View/BlocksAdvertisements/admin_view.ctp:27
 #: View/Clicks/admin_view.ctp:34
 #: View/Impressions/admin_view.ctp:34
 msgid "New Blocks Advertisement"
-msgstr ""
+msgstr "Nuevo bloque de anuncio"
 
 #: View/BlocksAdvertisements/admin_index.ctp:10
 msgid "Blocks Advertisements"
-msgstr ""
+msgstr "Bloques de anuncios"
 
 #: View/BlocksAdvertisements/admin_index.ctp:40
 #: View/BlocksAdvertisements/admin_view.ctp:61;98
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: View/BlocksAdvertisements/admin_view.ctp:2
 #: View/Clicks/admin_view.ctp:19
 #: View/Impressions/admin_view.ctp:19
 msgid "Blocks Advertisement"
-msgstr ""
+msgstr "Bloques de Anuncio"
 
 #: View/BlocksAdvertisements/admin_view.ctp:24
 msgid "Edit Blocks Advertisement"
-msgstr ""
+msgstr "Editar Bloque de Anuncio"
 
 #: View/BlocksAdvertisements/admin_view.ctp:25
 msgid "Delete Blocks Advertisement"
-msgstr ""
+msgstr "Eliminar bloque de Anuncios"
 
 #: View/BlocksAdvertisements/admin_view.ctp:39
 msgid "Related Clicks"
-msgstr ""
+msgstr "Clicks relacionados"
 
 #: View/BlocksAdvertisements/admin_view.ctp:44;81
 #: View/Clicks/admin_view.ctp:9
@@ -457,11 +458,20 @@ msgstr ""
 #: View/Clicks/admin_view.ctp:14
 #: View/Impressions/admin_view.ctp:14
 msgid "User Agent"
-msgstr ""
+msgstr "Navegador"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "Language"
+msgstr "Lenguage"
+
+msgid "Edit Advertisement"
+msgstr "Editar Anuncio"
 
 #: View/BlocksAdvertisements/admin_view.ctp:46;83
 msgid "Create"
-msgstr ""
+msgstr "creación"
 
 #: View/BlocksAdvertisements/admin_view.ctp:47;84
 msgid "Blocks Advertisement Id"
@@ -469,72 +479,107 @@ msgstr ""
 
 #: View/BlocksAdvertisements/admin_view.ctp:76
 msgid "Related Impressions"
-msgstr ""
+msgstr "Impresiones relacionadas"
 
 #: View/Clicks/admin_add.ctp:12
 msgid "Admin Add Click"
-msgstr ""
+msgstr "agregar click"
 
 #: View/Clicks/admin_edit.ctp:12
 msgid "Admin Edit Click"
-msgstr ""
+msgstr "editar click"
 
 #: View/Clicks/admin_view.ctp:2
 msgid "Click"
-msgstr ""
+msgstr "Click"
 
 #: View/Clicks/admin_view.ctp:29
 msgid "Edit Click"
-msgstr ""
+msgstr "Editar Click"
 
 #: View/Clicks/admin_view.ctp:30
 msgid "Delete Click"
-msgstr ""
+msgstr "Eliminar click"
 
 #: View/Impressions/admin_add.ctp:12
 msgid "Admin Add Impression"
-msgstr ""
+msgstr "Agregar impressón"
 
 #: View/Impressions/admin_edit.ctp:12
 msgid "Admin Edit Impression"
-msgstr ""
+msgstr "Editar impresión"
 
 #: View/Impressions/admin_view.ctp:2
 msgid "Impression"
-msgstr ""
+msgstr "Impresión"
 
 #: View/Impressions/admin_view.ctp:29
 msgid "Edit Impression"
-msgstr ""
+msgstr "Editar impresion"
 
 #: View/Impressions/admin_view.ctp:30
 msgid "Delete Impression"
-msgstr ""
+msgstr "Eliminar impresion"
 
 #: View/Layouts/admin.ctp:61
 msgid "Advertising"
-msgstr ""
+msgstr "Publicidad"
 
 #: View/Layouts/admin.ctp:70
 msgid "Back to main menu"
-msgstr ""
+msgstr "Regresar al menu principal"
 
-#: Model/Advertisement.php:validation for field url;validation for field target;validation for field name;validation for field height;validation for field width
-#: Model/Block.php:validation for field name;validation for field alias;validation for field height;validation for field width;validation for field orientation;validation for field type_animation;validation for field transition_time;validation for field ad_number_visible
-#: Model/Click.php:validation for field ip;validation for field user_agent
-#: Model/Impression.php:validation for field ip;validation for field user_agent
+#: Model/Advertisement.php:validation
+#: for field url;validation
+#: target;validation name;validation height;validation width
+#: Model/Block.php:validation
+#: alias;validation width;validation
+#: orientation;validation type_animation;validation transition_time;validation
+#: ad_number_visible Model/Click.php:validation
+#: ip;validation user_agent
+#: Model/Impression.php:validation
 msgid "notempty"
-msgstr ""
+msgstr "no vació"
 
-#: Model/Block.php:validation for field multiple
+#: Model/Block.php:validation
+#: for field multiple
 msgid "boolean"
 msgstr ""
 
-#: Model/Click.php:validation for field blocks_advertisement_id
-#: Model/Impression.php:validation for field blocks_advertisement_id
+#: Model/Click.php:validation
+#: for field blocks_advertisement_id
+#: Model/Impression.php:validation
 msgid "numeric"
-msgstr ""
+msgstr "numeros"
 
 #: View/Layouts/default.ctp:60
 msgid "Error with advertising"
-msgstr ""
+msgstr "Error con anuncio"
+
+msgid "Published"
+msgstr "Publicado"
+
+msgid "Creation Date"
+msgstr "Fecha de creación"
+
+msgid "Block code"
+msgstr "Código del bloque"
+
+msgid "Block Type"
+msgstr "Tipo de Bloque"
+
+msgid "Orientation"
+msgstr "Orientación"
+
+msgid "Type Animation"
+msgstr "Tipo de animación"
+
+msgid "Transition Time"
+msgstr "Tiempo de transición"
+
+msgid "Ad Number Visible"
+msgstr "Número de anuncios visibles"
+
+msgid "Add Advertisement"
+msgstr "Nuevo anuncio"
+

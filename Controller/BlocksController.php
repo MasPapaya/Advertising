@@ -33,7 +33,7 @@ class BlocksController extends AdvertisingAppController {
 	 */
 	public function admin_view($id = null) {
 		if (!$this->Block->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid block'));
+			throw new NotFoundException(__d('advertising', 'Invalid block'));
 		}
 		$options = array('conditions' => array('Block.' . $this->Block->primaryKey => $id));
 		$this->set('block', $this->Block->find('first', $options));
@@ -45,20 +45,19 @@ class BlocksController extends AdvertisingAppController {
 	 * @return void
 	 */
 	public function admin_add() {
+		$this->loadModel('Advertising.Advertisement');
 		if ($this->request->is('post')) {
 			$this->Block->create();
 
-//			$this->Block->set($this->request->data);
-//			$this->Block->validates();
 
 			if ($this->Block->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity', 'The block has been saved'), 'flash/success');
+				$this->Session->setFlash(__d('advertising', 'The block has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity', 'The block could not be saved. Please, try again.'), 'flash/error');
+				$this->Session->setFlash(__d('advertising', 'The block could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
-		$advertisements = $this->Block->Advertisement->find('list');
+		$advertisements = $this->Advertisement->find('list');
 		$this->set(compact('advertisements'));
 	}
 
@@ -71,15 +70,15 @@ class BlocksController extends AdvertisingAppController {
 	 */
 	public function admin_edit($id = null) {
 		if (!$this->Block->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid block'));
+			throw new NotFoundException(__d('advertising', 'Invalid block'));
 		}
 		$this->loadModel('Advertising.Advertisement');
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Block->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity', 'The block has been saved'), 'flash/success');
+				$this->Session->setFlash(__d('advertising', 'The block has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity', 'The block could not be saved. Please, try again.'), 'flash/error');
+				$this->Session->setFlash(__d('advertising', 'The block could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('Block.' . $this->Block->primaryKey => $id));
@@ -99,14 +98,14 @@ class BlocksController extends AdvertisingAppController {
 	public function admin_delete($id = null) {
 		$this->Block->id = $id;
 		if (!$this->Block->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid block'));
+			throw new NotFoundException(__d('advertising', 'Invalid block'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Block->delete()) {
-			$this->Session->setFlash(__d('publicity', 'Block deleted'), 'flash/success');
+			$this->Session->setFlash(__d('advertising', 'Block deleted'), 'flash/success');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__d('publicity', 'Block was not deleted'), 'flash/error');
+		$this->Session->setFlash(__d('advertising', 'Block was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
 	}
 
@@ -120,7 +119,7 @@ class BlocksController extends AdvertisingAppController {
 
 		$this->Block->id = $id;
 		if (!$this->Block->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid Block'));
+			throw new NotFoundException(__d('advertising', 'Invalid Block'));
 		}
 		$this->autoRender = false;
 		$Advertisement = $this->Block->read(null, $id);
@@ -135,7 +134,7 @@ class BlocksController extends AdvertisingAppController {
 	public function admin_get_code($id = null) {
 		$this->Block->id = $id;
 		if (!$this->Block->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid Block'));
+			throw new NotFoundException(__d('advertising', 'Invalid Block'));
 		}
 //		$block = $this->Block->read(array('Block.id','Block.height','Block.width','Block.orientation','Block.ad_number_visible','Block.multiple'));
 		$block = $this->Block->find('first', array(

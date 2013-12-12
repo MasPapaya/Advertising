@@ -47,7 +47,7 @@ class AdvertisementsComponent extends Component {
 
 		$this->Controller->Block->id = $id;
 		if (!$this->Controller->Block->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement - not existent'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement - not existent'));
 		}
 
 //	// CONSULTAMOS EL LENGUAGE

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Advertisements Controller
  *
@@ -11,7 +12,6 @@ class AdvertisementsController extends AdvertisingAppController {
 	 * @var type
 	 */
 	public $components = array();
-	
 	public $uses = array('Advertising.Advertisement');
 
 	function beforeFilter() {
@@ -60,7 +60,7 @@ class AdvertisementsController extends AdvertisingAppController {
 	 */
 	public function admin_view($id = null) {
 		if (!$this->Advertisement->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid advertisement'));
 		}
 		$options = array('conditions' => array('Advertisement.' . $this->Advertisement->primaryKey => $id));
 		$this->set('advertisement', $this->Advertisement->find('first', $options));
@@ -75,8 +75,8 @@ class AdvertisementsController extends AdvertisingAppController {
 		if ($this->request->is('post')) {
 			$this->Advertisement->create();
 			if (empty($this->request->data['Advertisement']['user_id'])) {
-				if($this->authuser['Group']['name'] == 'blogger' ){
-					$this->request->data['Advertisement']['user_id']=$this->authuser['id'];
+				if ($this->authuser['Group']['name'] == 'blogger') {
+					$this->request->data['Advertisement']['user_id'] = $this->authuser['id'];
 				}
 			}
 			if ($this->save_advertisement_blocks($this->request->data)) {
@@ -111,8 +111,9 @@ class AdvertisementsController extends AdvertisingAppController {
 	 * @return void
 	 */
 	public function admin_edit($id = null) {
+		$this->loadModel('Advertising.Block');
 		if (!$this->Advertisement->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid advertisement'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 
@@ -125,7 +126,7 @@ class AdvertisementsController extends AdvertisingAppController {
 		}
 
 		$this->loadModel('Language');
-		$this->loadModel('User');
+		$this->loadModel('Accounts.User');
 		$languages = $this->Language->find('list');
 		$users = $this->User->find('list', array(
 			'fields' => array('User.id', 'User.username'),
@@ -134,7 +135,13 @@ class AdvertisementsController extends AdvertisingAppController {
 				'User.deleted' => Configure::read('zero_datetime'),
 			)
 			));
-		$blocks = $this->Advertisement->Block->find('list');
+		$blocks = $this->Block->find('list', array(
+			'fields' => array('Block.id',
+				'Block.name',
+			)
+			)
+		);
+
 		$this->set(compact('blocks', 'users', 'languages'));
 		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {
 			$this->set('user_enable', true);
@@ -153,15 +160,15 @@ class AdvertisementsController extends AdvertisingAppController {
 	public function admin_delete($id = null) {
 		$this->Advertisement->id = $id;
 		if (!$this->Advertisement->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid advertisement'));
 		}
 
 		$this->request->onlyAllow('post', 'delete');
 
 		if ($this->Advertisement->updateAll(array('Advertisement.deleted' => "'" . date('Y-m-d H:i:s') . "'"), array('Advertisement.id' => $id))) {
-			$this->Session->setFlash(__d('publicity', 'Advertisement deleted'), 'flash/success');
+			$this->Session->setFlash(__d('advertising', 'Advertisement deleted'), 'flash/success');
 		} else {
-			$this->Session->setFlash(__d('publicity', 'Advertisement was not deleted'), 'flash/error');
+			$this->Session->setFlash(__d('advertising', 'Advertisement was not deleted'), 'flash/error');
 		}
 		$this->redirect(array('action' => 'index'));
 	}
@@ -176,7 +183,7 @@ class AdvertisementsController extends AdvertisingAppController {
 
 		$this->Advertisement->id = $id;
 		if (!$this->Advertisement->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid Advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid Advertisement'));
 		}
 
 		$this->autoRender = false;
@@ -241,7 +248,7 @@ class AdvertisementsController extends AdvertisingAppController {
 											'advertisement_id' => $this->Advertisement->id
 										)
 										));
-									$this->Session->setFlash(__d('publicity', 'The advertisement has been saved'), 'flash/success');
+									$this->Session->setFlash(__d('advertising', 'The advertisement has been saved'), 'flash/success');
 								} else {
 									$status = true;
 								}
@@ -250,26 +257,26 @@ class AdvertisementsController extends AdvertisingAppController {
 									// guardamos los bloques que guardaron el anuncio para una revision posterior
 									$blocks_for_Advertisement[] = $block_id;
 									$blocks_save = true;
-									$this->Session->setFlash(__d('publicity', 'The Advertisement has been saved in block %s ', $block['Block']['name']), 'flash/success');
+									$this->Session->setFlash(__d('advertising', 'The Advertisement has been saved in block %s ', $block['Block']['name']), 'flash/success');
 								} else {
 									//borramos el grupo elegido de los datos provenientes del formulario
 //										unset($this->request->data['Block']['Block'][$key]);
-									$this->Session->setFlash(__d('publicity', 'The advertisement has been saved, but the block "%s" does not allow the size of the Advertisement', $block['Block']['name']), 'flash/success');
+									$this->Session->setFlash(__d('advertising', 'The advertisement has been saved, but the block "%s" does not allow the size of the Advertisement', $block['Block']['name']), 'flash/success');
 								}
 							} else {
 								//borramos el grupo elegido de los datos provenientes del formulario
 //										unset($this->request->data['Block']['Block'][$key]);
-								$this->Session->setFlash(__d('publicity', 'The Advertisement height exceeds the limit of the block( %s ) ', $block['Block']['name']), 'flash/error');
+								$this->Session->setFlash(__d('advertising', 'The Advertisement height exceeds the limit of the block( %s ) ', $block['Block']['name']), 'flash/error');
 							}
 						} else {
 							//borramos el grupo elegido de los datos provenientes del formulario
 //										unset($this->request->data['Block']['Block'][$key]);
-							$this->Session->setFlash(__d('publicity', 'The Advertisement width exceeds the limit of the block( %s )', $block['Block']['name']), 'flash/error');
+							$this->Session->setFlash(__d('advertising', 'The Advertisement width exceeds the limit of the block( %s )', $block['Block']['name']), 'flash/error');
 						}
 					} else {
 						//borramos el grupo elegido de los datos provenientes del formulario
 //						unset($this->request->data['Block']['Block'][$key]);
-						$this->Session->setFlash(__d('publicity', 'The block does not exist'), 'flash/error');
+						$this->Session->setFlash(__d('advertising', 'The block does not exist'), 'flash/error');
 					}
 				}
 
@@ -289,7 +296,7 @@ class AdvertisementsController extends AdvertisingAppController {
 				return true;
 			}
 		} else {
-			$this->Session->setFlash(__d('publicity', 'The advertisement could not be saved. Please, try again.'), 'flash/error');
+			$this->Session->setFlash(__d('advertising', 'The advertisement could not be saved. Please, try again.'), 'flash/error');
 			return false;
 		}
 	}

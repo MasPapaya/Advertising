@@ -1,4 +1,4 @@
-<h4><?php echo __d('publicity','Block code')?></h4>
+<h4><?php echo __d('advertising','Block code')?></h4>
 <div class="well">
 	<div style="margin: 20px;border: 1px solid	#ccc; padding: 10px; overflow: hidden;">
 		<?php ob_start();?>

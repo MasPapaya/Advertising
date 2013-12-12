@@ -114,7 +114,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	 */
 	public function admin_view($id = null) {
 		if (!$this->BlocksAdvertisement->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement'));
 		}
 		$options = array('conditions' => array('BlocksAdvertisement.' . $this->BlocksAdvertisement->primaryKey => $id));
 		$this->set('blocksAdvertisement', $this->BlocksAdvertisement->find('first', $options));
@@ -129,10 +129,10 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 		if ($this->request->is('post')) {
 			$this->BlocksAdvertisement->create();
 			if ($this->BlocksAdvertisement->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity', 'The blocks advertisement has been saved'));
+				$this->Session->setFlash(__d('advertising', 'The blocks advertisement has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity', 'The blocks advertisement could not be saved. Please, try again.'));
+				$this->Session->setFlash(__d('advertising', 'The blocks advertisement could not be saved. Please, try again.'));
 			}
 		}
 		$blocks = $this->BlocksAdvertisement->Block->find('list');
@@ -149,14 +149,14 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	 */
 	public function admin_edit($id = null) {
 		if (!$this->BlocksAdvertisement->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->BlocksAdvertisement->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity', 'The blocks advertisement has been saved'));
+				$this->Session->setFlash(__d('advertising', 'The blocks advertisement has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity', 'The blocks advertisement could not be saved. Please, try again.'));
+				$this->Session->setFlash(__d('advertising', 'The blocks advertisement could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('BlocksAdvertisement.' . $this->BlocksAdvertisement->primaryKey => $id));
@@ -177,14 +177,14 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	public function admin_delete($id = null) {
 		$this->BlocksAdvertisement->id = $id;
 		if (!$this->BlocksAdvertisement->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->BlocksAdvertisement->delete()) {
-			$this->Session->setFlash(__d('publicity', 'Blocks advertisement deleted'));
+			$this->Session->setFlash(__d('advertising', 'Blocks advertisement deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__d('publicity', 'Blocks advertisement was not deleted'));
+		$this->Session->setFlash(__d('advertising', 'Blocks advertisement was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 
@@ -196,7 +196,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	public function admin_clicks($id = null) {
 		$this->BlocksAdvertisement->id = $id;
 		if (!$this->BlocksAdvertisement->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement'));
 		}
 
 		$this->loadModel('ViewClick');
@@ -215,7 +215,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	public function admin_impressions($id = null) {
 		$this->BlocksAdvertisement->id = $id;
 		if (!$this->BlocksAdvertisement->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement'));
 		}
 
 		$this->loadModel('ViewImpression');
@@ -248,7 +248,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 			));
 
 		if (empty($BlocksAdvertisement)) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement'));
 		}
 
 		$this->Click->create();
@@ -262,7 +262,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 		));
 
 		$this->redirect($BlocksAdvertisement['ViewBlocksAdvertisement']['advertisement_url']);
-		$this->layout = 'publicity';
+		$this->layout = 'advertising';
 	}
 
 	/**
@@ -277,7 +277,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 
 		$this->BlocksAdvertisement->Block->id = $id;
 		if (!$this->BlocksAdvertisement->Block->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement - not existent'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement - not existent'));
 		}
 
 		// CONSULTAMOS EL LENGUAGE
@@ -304,7 +304,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 			'conditions' => $conditions_viewbloksad
 			));
 
-		$this->layout = 'publicity';
+		$this->layout = 'advertising';
 
 		if ($nBA == 0) {
 			$this->view = 'show_empty';
@@ -426,7 +426,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 
 		$this->Block->id = $id;
 		if (!$this->Block->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid blocks advertisement - not existent'));
+			throw new NotFoundException(__d('advertising', 'Invalid blocks advertisement - not existent'));
 		}
 
 		// CONSULTAMOS EL LENGUAGE
@@ -453,7 +453,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 			'conditions' => $conditions_viewbloksad
 			));
 
-		$this->layout = 'publicity';
+		$this->layout = 'advertising';
 
 		if ($nBA == 0) {
 			$this->view = 'show_empty';

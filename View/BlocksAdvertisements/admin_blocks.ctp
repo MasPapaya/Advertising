@@ -1,5 +1,5 @@
 <div class="span12">
-	<h3><?php echo __d('publicity','Blocks'); ?></h3>
+	<h3><?php echo __d('advertising','Blocks'); ?></h3>
 	<?php
 		$this->Paginator->options(array(
 			'update' => '#blocks',
@@ -15,12 +15,12 @@
 				<th><?php echo $this->Paginator->sort('name'); ?></th>
 				<th><?php echo $this->Paginator->sort('alias'); ?></th>
 				<th><?php echo $this->Paginator->sort('multiple'); ?></th>
-				<th><?php echo $this->Paginator->sort('height',  __d('publicity', 'Height')); ?></th>
-				<th><?php echo $this->Paginator->sort('width',  __d('publicity', 'Width')); ?></th>
-				<th><?php echo $this->Paginator->sort('published',  __d('publicity', 'Published')); ?></th>
-				<th><?php echo __d('publicity','Clicks'); ?></th>
-				<th><?php echo __d('publicity','Impressions'); ?></th>
-				<th class="actions"><?php echo __d('publicity','Actions'); ?></th>
+				<th><?php echo $this->Paginator->sort('height',  __d('advertising', 'Height')); ?></th>
+				<th><?php echo $this->Paginator->sort('width',  __d('advertising', 'Width')); ?></th>
+				<th><?php echo $this->Paginator->sort('published',  __d('advertising', 'Published')); ?></th>
+				<th><?php echo __d('advertising','Clicks'); ?></th>
+				<th><?php echo __d('advertising','Impressions'); ?></th>
+				<th class="actions"><?php echo __d('advertising','Actions'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,8 +37,8 @@
 					<td><?php echo (int) count($block['Impression'])?></td>
 					<td>
 						<div class="btn-group">
-							<?php echo $this->Tools->link_button('<i class="icon-hand-up"></i>', array('controller'=>'BlocksAdvertisements','action' => 'clicks', $block['BlocksAdvertisement']['id'], 'admin' => true), '#detail-ba', array('class' => 'btn','title'=>__d('publicity','Details Clicks'))); ?>
-							<?php echo $this->Tools->link_button('<i class="icon-print"></i> ', array('controller'=>'BlocksAdvertisements','action' => 'impressions', $block['BlocksAdvertisement']['id'], 'admin' => true), '#detail-ba', array('class' => 'btn','title'=>__d('publicity','Details Impressions'))); ?>
+							<?php echo $this->Tools->link_button('<i class="icon-hand-up"></i>', array('controller'=>'BlocksAdvertisements','action' => 'clicks', $block['BlocksAdvertisement']['id'], 'admin' => true), '#detail-ba', array('class' => 'btn','title'=>__d('advertising','Details Clicks'))); ?>
+							<?php echo $this->Tools->link_button('<i class="icon-print"></i> ', array('controller'=>'BlocksAdvertisements','action' => 'impressions', $block['BlocksAdvertisement']['id'], 'admin' => true), '#detail-ba', array('class' => 'btn','title'=>__d('advertising','Details Impressions'))); ?>
 						</div>
 					</td>
 				</tr>

@@ -32,7 +32,7 @@ class ClicksController extends AdvertisingAppController {
 	 */
 	public function admin_view($id = null) {
 		if (!$this->Click->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid click'));
+			throw new NotFoundException(__d('advertising', 'Invalid click'));
 		}
 		$options = array('conditions' => array('Click.' . $this->Click->primaryKey => $id));
 		$this->set('click', $this->Click->find('first', $options));
@@ -47,10 +47,10 @@ class ClicksController extends AdvertisingAppController {
 		if ($this->request->is('post')) {
 			$this->Click->create();
 			if ($this->Click->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity', 'The click has been saved'), 'flash/success');
+				$this->Session->setFlash(__d('advertising', 'The click has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity', 'The click could not be saved. Please, try again.'), 'flash/error');
+				$this->Session->setFlash(__d('advertising', 'The click could not be saved. Please, try again.'), 'flash/error');
 			}
 		}
 		$blocksAdvertisements = $this->Click->BlocksAdvertisement->find('list');
@@ -66,14 +66,14 @@ class ClicksController extends AdvertisingAppController {
 	 */
 	public function admin_edit($id = null) {
 		if (!$this->Click->exists($id)) {
-			throw new NotFoundException(__d('publicity', 'Invalid click'));
+			throw new NotFoundException(__d('advertising', 'Invalid click'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Click->save($this->request->data)) {
-				$this->Session->setFlash(__d('publicity', 'The click has been saved'), 'flash/success');
+				$this->Session->setFlash(__d('advertising', 'The click has been saved'), 'flash/success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__d('publicity', 'The click could not be saved. Please, try again.'), 'flash/error');
+				$this->Session->setFlash(__d('advertising', 'The click could not be saved. Please, try again.'), 'flash/error');
 			}
 		} else {
 			$options = array('conditions' => array('Click.' . $this->Click->primaryKey => $id));
@@ -93,14 +93,14 @@ class ClicksController extends AdvertisingAppController {
 	public function admin_delete($id = null) {
 		$this->Click->id = $id;
 		if (!$this->Click->exists()) {
-			throw new NotFoundException(__d('publicity', 'Invalid click'));
+			throw new NotFoundException(__d('advertising', 'Invalid click'));
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Click->delete()) {
-			$this->Session->setFlash(__d('publicity', 'Click deleted'), 'flash/success');
+			$this->Session->setFlash(__d('advertising', 'Click deleted'), 'flash/success');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__d('publicity', 'Click was not deleted'), 'flash/error');
+		$this->Session->setFlash(__d('advertising', 'Click was not deleted'), 'flash/error');
 		$this->redirect(array('action' => 'index'));
 	}
 

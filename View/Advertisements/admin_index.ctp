@@ -2,12 +2,12 @@
 	<div class="well">
 		<ul class="nav nav-list">
 			<li class="nav-header"><?php echo __d('resources', 'Actions'); ?></li>			
-			<li><?php echo $this->Html->link('<i class="icon-plus-sign"&nbsp;></i>' . __d('publicity', 'New Advertisement'), array('action' => 'add'), array('escape' => FALSE)); ?></li>
+			<li><?php echo $this->Html->link('<i class="icon-plus-sign"&nbsp;></i>' . __d('advertising', 'New Advertisement'), array('action' => 'add'), array('escape' => FALSE)); ?></li>
 		</ul>
 	</div>
 </div>
 <div class="span8">
-	<h2><?php echo __d('publicity', 'Advertisements'); ?></h2>
+	<h2><?php echo __d('advertising', 'Advertisements'); ?></h2>
 	<?php
 	$this->Paginator->options(array(
 		'update' => '#content_layout',
@@ -22,8 +22,8 @@
 				<th><?php echo $this->Paginator->sort('id'); ?></th>
 				<th><?php echo $this->Paginator->sort('name'); ?></th>
 				<th><?php echo $this->Paginator->sort('target'); ?></th>
-				<th><?php echo $this->Paginator->sort('published', __d('publicity', 'Published')); ?></th>
-				<th class="actions"><?php echo __d('publicity', 'Actions'); ?></th>
+				<th><?php echo $this->Paginator->sort('published', __d('advertising', 'Published')); ?></th>
+				<th class="actions"><?php echo __d('advertising', 'Actions'); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,7 +45,7 @@
 								echo $this->Frame->link('icon-film', 'frame', 'advertising', $advertisement['Advertisement']['id']);
 							}
 							?>
-							<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $advertisement['Advertisement']['id']), array('class' => 'btn btn-danger', 'escape' => false), __d('publicity', 'Are you sure you want to delete # %s?', $advertisement['Advertisement']['id'])); ?>
+							<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $advertisement['Advertisement']['id']), array('class' => 'btn btn-danger', 'escape' => false), __d('advertising', 'Are you sure you want to delete # %s?', $advertisement['Advertisement']['id'])); ?>
 						</div>
 					</td>
 				</tr>
