@@ -33,7 +33,7 @@
 					<td><?php echo h($advertisement['Advertisement']['name']); ?>&nbsp;</td>
 					<td><?php echo h($advertisement['Advertisement']['target']); ?>&nbsp;</td>
 					<td>						
-					<?php echo $this->Tools->link_button(($advertisement['Advertisement']['published'] == Configure::read('zero_datetime')) ? '<i class=" icon-remove"></i>' : '<i class="icon-ok"></i>', array('action' => 'published', $advertisement['Advertisement']['id'], 'admin' => true), '#primary-ajax', array('class' => 'btn')); ?>
+						<?php echo $this->Tools->link_button(($advertisement['Advertisement']['published'] == Configure::read('zero_datetime')) ? '<i class=" icon-remove"></i>' : '<i class="icon-ok"></i>', array('action' => 'published', $advertisement['Advertisement']['id'], 'admin' => true), '#primary-ajax', array('class' => 'btn')); ?>
 					</td>
 					<td class="actions">
 						<div class="btn-group">							
@@ -54,8 +54,7 @@
 	</table>
 	<?php
 	if (CakePlugin::loaded('Resources')) {
-
-		echo $this->Frame->modal('frame', 'documents');
+		echo $this->Frame->modal('frame', array('title' => __('Advertising')));
 	}
 	?>
 	<div class="pagination pagination-centered">
