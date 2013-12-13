@@ -93,7 +93,13 @@ class AdvertisementsController extends AdvertisingAppController {
 				'User.deleted' => Configure::read('zero_datetime'),
 			)
 			));
-		$blocks = $this->Advertisement->Block->find('list');
+
+		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {
+			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name')));
+		} else {
+			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('Block.is_user' => true)));
+		}
+
 		$this->set(compact('blocks', 'users', 'languages'));
 
 		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {

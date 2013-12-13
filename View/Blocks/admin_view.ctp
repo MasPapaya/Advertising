@@ -29,6 +29,11 @@
 			<?php echo h($block['Block']['multiple']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __d('advertising','Is User'); ?></dt>
+		<dd>
+			<?php echo h($block['Block']['is_user']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __d('advertising','Height'); ?></dt>
 		<dd>
 			<?php echo h($block['Block']['height']); ?>

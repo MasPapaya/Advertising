@@ -43,6 +43,7 @@ ALTER TABLE advertisements ADD INDEX lan_use_idx (language_id ASC);
 CREATE TABLE IF NOT EXISTS blocks (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   multiple TINYINT(1) NOT NULL,
+  is_user TINYINT(1) NOT NULL,
   block_type char(1) NOT NULL DEFAULT '1',
   published DATETIME NOT NULL,
   name VARCHAR(45) NOT NULL,
