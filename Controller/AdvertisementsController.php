@@ -40,10 +40,9 @@ class AdvertisementsController extends AdvertisingAppController {
 			$this->paginate();
 		} else {
 			$this->paginate = array(
-				'conditions' => array('Advertisement.user_id ' => $this->authuser['id']),
+				'conditions' => array('user_id ' => $this->authuser['id']),
 			);
 		}
-
 
 		$this->set('advertisements', $this->paginate());
 		if (CakePlugin::loaded('Resources')) {
@@ -75,8 +74,18 @@ class AdvertisementsController extends AdvertisingAppController {
 		if ($this->request->is('post')) {
 			$this->Advertisement->create();
 			if (empty($this->request->data['Advertisement']['user_id'])) {
-				if ($this->authuser['Group']['name'] == 'blogger') {
-					$this->request->data['Advertisement']['user_id'] = $this->authuser['id'];
+				$this->request->data['Advertisement']['user_id'] = $this->authuser['id'];
+				$this->request->data['Advertisement']['target'] = '_blank';
+				$this->loadModel('Advertising.Block');
+				$info_block = $this->Block->find('first', array(
+					'conditions' => array('Block.id' => end($this->request->data['Block']))
+					));
+
+				if (!empty($info_block)) {
+					$this->request->data['Advertisement']['width'] = $info_block['Block']['width'];
+					$this->request->data['Advertisement']['height'] = $info_block['Block']['height'];
+				} else {
+					throw new NotFoundException(__d('advertising', 'Invalid Block'));
 				}
 			}
 			if ($this->save_advertisement_blocks($this->request->data)) {
@@ -95,18 +104,14 @@ class AdvertisementsController extends AdvertisingAppController {
 			));
 
 		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {
-			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name')));
+			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('published !=' => Configure::read('zero_datetime'))));
+			$this->set('user_enable', true);
 		} else {
-			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('Block.is_user' => true)));
+			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('Block.is_user' => true, 'published !=' => Configure::read('zero_datetime'))));
+			$this->set('user_enable', false);
 		}
 
 		$this->set(compact('blocks', 'users', 'languages'));
-
-		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {
-			$this->set('user_enable', true);
-		} else {
-			$this->set('user_enable', false);
-		}
 	}
 
 	/**
@@ -122,6 +127,20 @@ class AdvertisementsController extends AdvertisingAppController {
 			throw new NotFoundException(__d('advertising', 'Invalid advertisement'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+
+			if (empty($this->request->data['Advertisement']['user_id'])) {
+				$this->loadModel('Advertising.Block');
+				$info_block = $this->Block->find('first', array(
+					'conditions' => array('Block.id' => end($this->request->data['Block']))
+					));
+
+				if (!empty($info_block)) {
+					$this->request->data['Advertisement']['width'] = $info_block['Block']['width'];
+					$this->request->data['Advertisement']['height'] = $info_block['Block']['height'];
+				} else {
+					throw new NotFoundException(__d('advertising', 'Invalid Block'));
+				}
+			}
 
 			if ($this->save_advertisement_blocks($this->request->data)) {
 				$this->redirect(array('action' => 'index'));
@@ -141,19 +160,21 @@ class AdvertisementsController extends AdvertisingAppController {
 				'User.deleted' => Configure::read('zero_datetime'),
 			)
 			));
-		$blocks = $this->Block->find('list', array(
-			'fields' => array('Block.id',
-				'Block.name',
-			)
-			)
-		);
-
-		$this->set(compact('blocks', 'users', 'languages'));
+//		$blocks = $this->Block->find('list', array(
+//			'fields' => array('Block.id',
+//				'Block.name',
+//			)
+//			)
+//		);	
 		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {
+			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('published !=' => Configure::read('zero_datetime'))));
 			$this->set('user_enable', true);
 		} else {
+			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('Block.is_user' => true, 'published !=' => Configure::read('zero_datetime'))));
 			$this->set('user_enable', false);
 		}
+
+		$this->set(compact('blocks', 'users', 'languages'));
 	}
 
 	/**

@@ -7,7 +7,9 @@ class AdvertisingAppModel extends AppModel {
 	public function beforeFind($queryData) {
 		if ($this->hasField('deleted')) {
 			if (!empty($queryData['conditions'])) {
-				$queryData['conditions'] = array_merge_recursive($queryData['conditions'], array($this->alias . '.deleted' => '"' . Configure::write('zero_datetime') . '"'));
+				if ($this->alias != 'Advertisement') {
+					$queryData['conditions'] = array_merge_recursive($queryData['conditions'], array($this->alias . '.deleted' => '"' . Configure::write('zero_datetime') . '"'));
+				}
 			}
 		}
 

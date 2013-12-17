@@ -16,24 +16,29 @@
 				<?php
 				echo $this->Form->input('name');
 				echo $this->Form->input('url', array('type' => 'text'));
-				echo $this->Form->input('target', array('empty' => __d('advertising', 'Select'), 'options' => array(
-						'_blank' => '_blank',
-						'_self' => '_self',
-						'_parent' => '_parent',
-						'_top' => '_top',
-					)));
-				echo $this->Form->input('width', array('label' => __d('advertising', 'Width')));
-				echo $this->Form->input('height', array('label' => __d('advertising', 'Height')));
+				?>
+				<?php
+				if ($user_enable):
+					echo $this->Form->input('target', array('empty' => __d('advertising', 'Select'), 'options' => array(
+							'_blank' => '_blank',
+							'_self' => '_self',
+							'_parent' => '_parent',
+							'_top' => '_top',
+						)));
+					echo $this->Form->input('width', array('label' => __d('advertising', 'Width')));
+					echo $this->Form->input('height', array('label' => __d('advertising', 'Height')));
+				endif;
 				?>
 			</div>
 			<div class="span7">
 				<?php
 				echo $this->Form->input('published', array('type' => 'hidden', 'value' => Configure::read('zero_datetime')));
 				echo $this->Form->input('deleted', array('type' => 'hidden', 'value' => Configure::read('zero_datetime')));
-
-				echo $this->Form->input('Block', array('class' => 'chosen_groups', 'label' => __d('advertising', 'Block')));
-				echo '<br />';
-
+				if(count($blocks) > 1){
+				echo $this->Form->input('Block', array('class' => 'chosen_groups', 'label' => __d('advertising', 'Block')));	
+				}else{
+					echo $this->Form->input('Block', array('type'=>'hidden','value'=>  key($blocks)));
+				}				
 				if ($user_enable) {
 					echo $this->Form->input('user_id', array(
 						'class' => 'chosen_groups',
@@ -41,12 +46,7 @@
 						'required' => false,
 						'empty' => ''
 					));
-				}
-
-
-
-
-				echo '<br />';
+				}				
 				echo $this->Form->input('language_id', array(
 					'class' => 'chosen_groups',
 					'label' => __d('advertising', 'Language'),

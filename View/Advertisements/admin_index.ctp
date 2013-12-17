@@ -62,4 +62,3 @@
 	</div>
 	<div id="blocks"></div>
 </div>
-
