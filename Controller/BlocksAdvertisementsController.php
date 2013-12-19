@@ -14,6 +14,7 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 		$this->Auth->deny();
 //		$this->Auth->allow('public_show','show','register_click');
 		$this->Auth->allow();
+		
 	}
 	
 	
@@ -62,19 +63,17 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 			),
 			'joins' => array(
 				array(
-					'alias' => 'Advertisement',
+					'alias' => 'Advertisements',
 					'table' => 'advertisements',
 					'type' => 'INNER',
 					'conditions' => array(
-						'Advertisement.deleted = '.'"'.Configure::read('zero_datetime').'"',
+						'Advertisements.deleted = '.'"'.Configure::read('zero_datetime').'"',
 					),
 				),
 			)
 		);
 		
-		
 				
-
 		$this->set('advertisements', $this->paginate());
 	}
 
