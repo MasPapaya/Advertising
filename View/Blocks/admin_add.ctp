@@ -1,15 +1,10 @@
-<div class="span3">	
-	<div class="well">
-		<ul class="nav nav-list">
-			<li class="nav-header"><?php echo __d('advertising', 'Actions'); ?></li>			
-			<li><?php echo $this->Html->link('<i class="icon-list"></i>' . __d('advertising', 'List Blocks'), array('action' => 'index'), array('escape' => FALSE)); ?></li>
-		</ul>
+<div class="cru">
+	<div class="btn-options">
+		<?php echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE)); ?>	
 	</div>
-</div>
-<div class="span8">
 	<?php echo $this->Form->create('Block'); ?>
 	<fieldset>
-		<legend><?php echo __d('advertising', 'Add Block'); ?></legend>
+		<legend><?php echo __d('advertising', 'New Block'); ?></legend>
 		<div class="row-fluid">
 			<div class="span6">
 				<?php
@@ -59,7 +54,7 @@
 			</div>
 		</div>
 	</fieldset>
-	<?php echo $this->Form->end(array('label' => __d('advertising', 'Submit'), 'class' => 'btn btn-primary')); ?>
+	<?php echo $this->Form->end(array('label' => __d('advertising', 'Save'), 'class' => 'btn btn-primary')); ?>
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){

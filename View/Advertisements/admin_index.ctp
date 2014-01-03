@@ -1,4 +1,4 @@
-<div >
+<div class="advertising">
 	<div>
 		<?php echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __('New Advertisement'), array('action' => 'add', 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary')); ?>
 	</div>

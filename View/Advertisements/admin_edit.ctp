@@ -1,12 +1,7 @@
-<div class="span3">	
-	<div class="well">
-		<ul class="nav nav-list">
-			<li class="nav-header"><?php echo __d('resources', 'Actions'); ?></li>
-			<li><?php echo $this->Html->link('<i class="icon-list"></i>' . __d('advertising', 'List Advertisements'), array('action' => 'index'), array('escape' => FALSE)); ?></li>
-		</ul>
+<div class="cru">
+	<div class="btn-options">
+		<?php echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE)); ?>	
 	</div>
-</div>
-<div class="span8">
 	<?php echo $this->Form->create('Advertisement'); ?>
 	<fieldset>
 		<legend><?php echo __d('advertising', 'Edit Advertisement'); ?></legend>			
@@ -40,7 +35,7 @@
 				if ($user_enable) {
 					echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.group_id')));
 				}
-			
+
 				echo $this->Form->input('language_id', array(
 					'class' => 'chosen_groups',
 					'label' => __d('advertising', 'Language'),
@@ -50,5 +45,5 @@
 		</div>
 		<br />
 	</fieldset>
-	<?php echo $this->Form->end(array('label' => __d('advertising', 'Submit'), 'class' => 'btn btn-primary')); ?>
+	<?php echo $this->Form->end(array('label' => __d('advertising', 'Save'), 'class' => 'btn btn-primary')); ?>
 </div>

@@ -178,8 +178,8 @@ msgstr "Seleccione"
 #: View/Clicks/admin_edit.ctp:20
 #: View/Impressions/admin_add.ctp:19
 #: View/Impressions/admin_edit.ctp:20
-msgid "Submit"
-msgstr "Enviar"
+msgid "Save"
+msgstr "Guardar"
 
 #: View/Advertisements/admin_edit.ctp:12
 msgid "Admin Edit Advertisement"
