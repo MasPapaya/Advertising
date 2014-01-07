@@ -71,7 +71,7 @@ class AdvertisementsController extends AdvertisingAppController {
 	 * @return void
 	 */
 	public function admin_add() {
-		if ($this->request->is('post')) {
+			if ($this->request->is('post') || $this->request->is('put')) {
 			$this->Advertisement->create();
 			if (empty($this->request->data['Advertisement']['user_id'])) {
 				$this->request->data['Advertisement']['user_id'] = $this->authuser['id'];
@@ -88,6 +88,7 @@ class AdvertisementsController extends AdvertisingAppController {
 					throw new NotFoundException(__d('advertising', 'Invalid Block'));
 				}
 			}
+			
 			if ($this->save_advertisement_blocks($this->request->data)) {
 				$this->redirect(array('action' => 'index'));
 			}
@@ -239,6 +240,7 @@ class AdvertisementsController extends AdvertisingAppController {
 			if (!empty($data['Block']['Block'])) {
 				$blocks_save = false;
 				$blocks_for_Advertisement = array();
+				pr($data);
 
 				//itero sobre los bloques para poder guardarlos
 				foreach ($data['Block']['Block'] as $key => $block_id) {

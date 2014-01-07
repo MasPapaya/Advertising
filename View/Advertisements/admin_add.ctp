@@ -31,7 +31,7 @@
 				if(count($blocks) > 1){
 				echo $this->Form->input('Block', array('class' => 'chosen_groups', 'label' => __d('advertising', 'Block')));	
 				}else{
-					echo $this->Form->input('Block', array('type'=>'hidden','value'=>  key($blocks)));
+					echo $this->Form->input('Block.0', array('type'=>'hidden','value'=>  key($blocks)));
 				}				
 				if ($user_enable) {
 					echo $this->Form->input('user_id', array(
