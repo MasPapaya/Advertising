@@ -32,21 +32,25 @@ class AdvertisementsController extends AdvertisingAppController {
 	 *
 	 * @return void
 	 */
-	public function admin_index() {
+	public function admin_index($block_alias = null) {
 //		$this->paginate = array();
 		$this->Advertisement->recursive = 0;
 
 		if ($this->authuser['Group']['name'] == 'superadmin' || $this->authuser['Group']['name'] == 'admin') {
-			$this->paginate();
+			$this->paginate = array('conditions' => array('deleted' => Configure::read('zero_datetime')));
 		} else {
 			$this->paginate = array(
-				'conditions' => array('user_id ' => $this->authuser['id']),
+				'conditions' => array('user_id ' => $this->authuser['id'], 'deleted' => Configure::read('zero_datetime')),
 			);
 		}
 
 		$this->set('advertisements', $this->paginate());
 		if (CakePlugin::loaded('Resources')) {
 			$this->helpers[] = 'Resources.Frame';
+		}
+
+		if (!is_null($block_alias)) {
+			$this->set(compact('block_alias'));
 		}
 	}
 
@@ -57,7 +61,10 @@ class AdvertisementsController extends AdvertisingAppController {
 	 * @param string $id
 	 * @return void
 	 */
-	public function admin_view($id = null) {
+	public function admin_view($id = null, $block_alias = null) {
+		if (!is_null($block_alias)) {
+			$this->set(compact('block_alias'));
+		}
 		if (!$this->Advertisement->exists($id)) {
 			throw new NotFoundException(__d('advertising', 'Invalid advertisement'));
 		}
@@ -70,8 +77,12 @@ class AdvertisementsController extends AdvertisingAppController {
 	 *
 	 * @return void
 	 */
-	public function admin_add() {
-			if ($this->request->is('post') || $this->request->is('put')) {
+	public function admin_add($block_alias = null) {
+		if (!is_null($block_alias)) {
+			$this->set(compact('block_alias'));
+		}
+
+		if ($this->request->is('post') || $this->request->is('put')) {
 			$this->Advertisement->create();
 			if (empty($this->request->data['Advertisement']['user_id'])) {
 				$this->request->data['Advertisement']['user_id'] = $this->authuser['id'];
@@ -88,7 +99,7 @@ class AdvertisementsController extends AdvertisingAppController {
 					throw new NotFoundException(__d('advertising', 'Invalid Block'));
 				}
 			}
-			
+
 			if ($this->save_advertisement_blocks($this->request->data)) {
 				$this->redirect(array('action' => 'index'));
 			}
@@ -108,7 +119,17 @@ class AdvertisementsController extends AdvertisingAppController {
 			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('published !=' => Configure::read('zero_datetime'))));
 			$this->set('user_enable', true);
 		} else {
-			$blocks = $this->Advertisement->Block->find('list', array('fields' => array('id', 'name'), 'conditions' => array('Block.is_user' => true, 'published !=' => Configure::read('zero_datetime'))));
+			if (!is_null($block_alias)) {
+				$block = $this->Advertisement->Block->find('first', array('fields' => array('Block.id'), 'conditions' => array('Block.alias' => $block_alias)));
+				if (!empty($block)) {
+					$blocks = $block['Block']['id'];
+				} else {
+					throw new NotFoundException(__d('advertising', 'Invalid Bloack alias'));
+				}
+			} else {
+				throw new NotFoundException(__d('advertising', 'Invalid Bloack alias'));
+			}
+			$this->set('block_id', true);
 			$this->set('user_enable', false);
 		}
 
@@ -122,7 +143,10 @@ class AdvertisementsController extends AdvertisingAppController {
 	 * @param string $id
 	 * @return void
 	 */
-	public function admin_edit($id = null) {
+	public function admin_edit($id = null, $block_alias = null) {
+		if (!is_null($block_alias)) {
+			$this->set(compact('block_alias'));
+		}
 		$this->loadModel('Advertising.Block');
 		if (!$this->Advertisement->exists($id)) {
 			throw new NotFoundException(__d('advertising', 'Invalid advertisement'));
@@ -240,7 +264,6 @@ class AdvertisementsController extends AdvertisingAppController {
 			if (!empty($data['Block']['Block'])) {
 				$blocks_save = false;
 				$blocks_for_Advertisement = array();
-				pr($data);
 
 				//itero sobre los bloques para poder guardarlos
 				foreach ($data['Block']['Block'] as $key => $block_id) {

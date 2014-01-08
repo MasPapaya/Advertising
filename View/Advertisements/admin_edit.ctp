@@ -1,6 +1,13 @@
 <div class="cru">
 	<div class="btn-options">
-		<?php echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE)); ?>	
+		<?php
+		if (!empty($block_alias)) {
+
+			echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', $block_alias, 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE));
+		} else {
+			echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE));
+		}
+		?>
 	</div>
 	<?php echo $this->Form->create('Advertisement'); ?>
 	<fieldset>
@@ -25,12 +32,12 @@
 				endif;
 				?>
 			</div>
-			<div class="span7">
+			<div class="span5">
 				<?php
 				if (count($blocks) > 1) {
 					echo $this->Form->input('Block', array('class' => 'chosen_groups', 'label' => __d('advertising', 'Block')));
 				} else {
-					echo $this->Form->input('Block', array('type' => 'hidden', 'value' => key($blocks)));
+					echo $this->Form->input('Block.Block.0', array('type' => 'hidden', 'value' => key($blocks)));
 				}
 				if ($user_enable) {
 					echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.group_id')));

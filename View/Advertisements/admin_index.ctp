@@ -1,6 +1,14 @@
 <div class="advertising">
-	<div>
-		<?php echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __('New Advertisement'), array('action' => 'add', 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary')); ?>
+	<div>		
+		<?php
+		if (!empty($block_alias)) {
+			echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __('New Advertisement'), array('action' => 'add', $block_alias, 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary'));
+		} else {
+			$block_alias = '';
+			echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __('New Advertisement'), array('action' => 'add', 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary'));
+		}
+		?>
+
 	</div>
 
 	<div>
@@ -34,9 +42,9 @@
 						</td>
 						<td class="actions">
 							<div class="btn-group">							
-								<?php echo $this->Tools->link_button('<i class="icon-th"></i>', array('controller' => 'BlocksAdvertisements', 'action' => 'blocks', $advertisement['Advertisement']['id'], 'admin' => true), '#blocks', array('class' => 'btn')); ?>
-								<?php echo $this->Html->link('<i class="icon-eye-open"></i>', array('action' => 'view', $advertisement['Advertisement']['id']), array('class' => 'btn', 'escape' => false)); ?>
-								<?php echo $this->Html->link('<i class="icon-edit"></i>', array('action' => 'edit', $advertisement['Advertisement']['id']), array('class' => 'btn', 'escape' => false)); ?>
+								<?php echo $this->Tools->link_button('<i class="icon-th"></i>', array('controller' => 'BlocksAdvertisements', 'action' => 'blocks', $advertisement['Advertisement']['id'], $block_alias, 'admin' => true), '#blocks', array('class' => 'btn')); ?>
+								<?php echo $this->Html->link('<i class="icon-eye-open"></i>', array('action' => 'view', $advertisement['Advertisement']['id'] . $block_alias), array('class' => 'btn', 'escape' => false)); ?>
+								<?php echo $this->Html->link('<i class="icon-edit"></i>', array('action' => 'edit', $advertisement['Advertisement']['id'], $block_alias), array('class' => 'btn', 'escape' => false)); ?>
 								<?php
 								if (CakePlugin::loaded('Resources')) {
 									echo $this->Frame->link('icon-film', 'frame', 'advertising', $advertisement['Advertisement']['id']);
