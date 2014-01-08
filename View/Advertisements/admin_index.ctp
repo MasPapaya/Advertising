@@ -41,8 +41,10 @@
 							<?php echo $this->Tools->link_button(($advertisement['Advertisement']['published'] == Configure::read('zero_datetime')) ? '<i class=" icon-remove"></i>' : '<i class="icon-ok"></i>', array('action' => 'published', $advertisement['Advertisement']['id'], 'admin' => true), '#primary-ajax', array('class' => 'btn')); ?>
 						</td>
 						<td class="actions">
-							<div class="btn-group">							
-								<?php echo $this->Tools->link_button('<i class="icon-th"></i>', array('controller' => 'BlocksAdvertisements', 'action' => 'blocks', $advertisement['Advertisement']['id'], $block_alias, 'admin' => true), '#blocks', array('class' => 'btn')); ?>
+							<div class="btn-group">		
+								<?php if ($authuser['Group']['name'] == 'superadmin' || $authuser['Group']['name'] == 'admin'): ?>
+									<?php echo $this->Tools->link_button('<i class="icon-th"></i>', array('controller' => 'BlocksAdvertisements', 'action' => 'blocks', $advertisement['Advertisement']['id'], $block_alias, 'admin' => true), '#blocks', array('class' => 'btn')); ?>
+								<?php endif; ?>
 								<?php echo $this->Html->link('<i class="icon-eye-open"></i>', array('action' => 'view', $advertisement['Advertisement']['id'] . $block_alias), array('class' => 'btn', 'escape' => false)); ?>
 								<?php echo $this->Html->link('<i class="icon-edit"></i>', array('action' => 'edit', $advertisement['Advertisement']['id'], $block_alias), array('class' => 'btn', 'escape' => false)); ?>
 								<?php
