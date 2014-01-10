@@ -2,10 +2,10 @@
 	<div>		
 		<?php
 		if (!empty($block_alias)) {
-			echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __('New Advertisement'), array('action' => 'add', $block_alias, 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary'));
+			echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __d('advertising','New Advertisement'), array('action' => 'add', $block_alias, 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary'));
 		} else {
 			$block_alias = '';
-			echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __('New Advertisement'), array('action' => 'add', 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary'));
+			echo $this->Html->link('<i class="icon-plus-sign icon-white"></i>&nbsp;' . __d('advertising','New Advertisement'), array('action' => 'add', 'admin' => true), array('escape' => FALSE, 'class' => 'btn btn-primary'));
 		}
 		?>
 
@@ -45,11 +45,16 @@
 								<?php if ($authuser['Group']['name'] == 'superadmin' || $authuser['Group']['name'] == 'admin'): ?>
 									<?php echo $this->Tools->link_button('<i class="icon-th"></i>', array('controller' => 'BlocksAdvertisements', 'action' => 'blocks', $advertisement['Advertisement']['id'], $block_alias, 'admin' => true), '#blocks', array('class' => 'btn')); ?>
 								<?php endif; ?>
-								<?php echo $this->Html->link('<i class="icon-eye-open"></i>', array('action' => 'view', $advertisement['Advertisement']['id'] . $block_alias), array('class' => 'btn', 'escape' => false)); ?>
+								<?php echo $this->Html->link('<i class="icon-eye-open"></i>', array('action' => 'view', $advertisement['Advertisement']['id'],$block_alias), array('class' => 'btn', 'escape' => false)); ?>
 								<?php echo $this->Html->link('<i class="icon-edit"></i>', array('action' => 'edit', $advertisement['Advertisement']['id'], $block_alias), array('class' => 'btn', 'escape' => false)); ?>
 								<?php
 								if (CakePlugin::loaded('Resources')) {
-									echo $this->Frame->link('icon-film', 'frame', 'advertising', $advertisement['Advertisement']['id']);
+									if ($authuser['Group']['name'] == 'superadmin' || $authuser['Group']['name'] == 'admin') {
+										echo $this->Frame->link('icon-film', 'frame', 'advertising', $advertisement['Advertisement']['id']);
+									} else {
+										echo $this->Frame->link_files('icon-film', 'frame', 3, $advertisement['Advertisement']['id']);
+										//echo $this->Frame->link('icon-film', 'frame', 'advertising', $advertisement['Advertisement']['id']);										
+									}
 								}
 								?>
 								<?php echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $advertisement['Advertisement']['id']), array('class' => 'btn btn-danger', 'escape' => false), __d('advertising', 'Are you sure you want to delete # %s?', $advertisement['Advertisement']['id'])); ?>
