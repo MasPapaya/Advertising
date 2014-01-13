@@ -16,7 +16,8 @@ class AdvertisementsController extends AdvertisingAppController {
 
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow();
+		
+		
 		if (CakePlugin::loaded('Resources')) {
 			Cache::write('Resources_configurations', array(
 				'Entity' => array(
