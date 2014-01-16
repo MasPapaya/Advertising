@@ -392,5 +392,54 @@ class AdvertisementsController extends AdvertisingAppController {
 			}
 		}
 	}
+	
+	
+	
+	public function admin_search() {
+		$conditions = array();
+		if (isset($this->request->data['Advertisement']['search']) and $this->request->data['Advertisement']['search'] != " ") {
+			if (strlen($this->request->data['Advertisement']['search']) > 2) {
+				$this->Session->delete('conditions_search');
+				$fields = trim($this->request->data['Advertisement']['search'], " ");
+				$search = explode(" ", $fields);
+				for ($i = 0; $i < count($search); $i++) {
+					if (strlen($search[$i]) > 2) {
+						$conditions[] = "Advertisement.name like '%" . $search[$i] . "%'";						
+					}
+				}
+				$results = $this->paginate('Advertisement', array(
+					'OR' => $conditions,
+					));
+				$this->Session->write('conditions_search', $conditions);
+				if (count($results) == 0) {
+					$this->Session->setFlash('No se encontraron Registros!.', 'flash/warning');
+				}
+				$this->set('advertisements', $results);
+			}else{
+				$this->Session->setFlash('No se encontraron Registros!.', 'flash/warning');
+				$this->redirect(array('action' => 'index'));
+			}
+		} else {
+			$settings = array();
+			if ($this->Session->check('conditions_search')) {
+				if (!empty($this->request->params['named']['page'])) {
+					$settings['page'] = $this->request->params['named']['page'];
+				} else {
+					$settings['page'] = 1;
+				}
+				$settings['conditions']['OR'] = $this->Session->read('conditions_search');
+				$this->paginate = $settings;
+				$this->set('advertisements', $this->paginate());
+			} else {
+				$this->Session->setFlash('No se encontraron Registros!.', 'flash/warning');
+				$this->redirect(array('action' => 'index'));
+			}
+		}
+	}
+	
+	
+	
+	
+	
 
 }

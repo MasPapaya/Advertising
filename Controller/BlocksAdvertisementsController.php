@@ -11,9 +11,11 @@ class BlocksAdvertisementsController extends AdvertisingAppController {
 	public $uses = array('Advertising.BlocksAdvertisement');
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->deny();
-//		$this->Auth->allow('public_show','show','register_click');
+//		$this->Auth->deny();
+		///$this->Auth->allow('public_show','show','register_click');
 		$this->Auth->allow();
+		
+		
 		
 	}
 	
