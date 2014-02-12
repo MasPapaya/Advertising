@@ -3,9 +3,9 @@
 		<?php
 		if (!empty($block_alias)) {
 
-			echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', $block_alias, 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE));
+			echo $this->Html->link('<i class="glyphicon glyphicon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', $block_alias, 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE));
 		} else {
-			echo $this->Html->link('<i class="icon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE));
+			echo $this->Html->link('<i class="glyphicon glyphicon-list icon-white"></i>&nbsp;' . __('Back to List'), array('action' => 'index', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => FALSE));
 		}
 		?>
 
@@ -13,8 +13,8 @@
 	<?php echo $this->Form->create('Advertisement'); ?>
 	<fieldset>
 		<legend><?php echo __d('advertising', 'Add Advertisement'); ?></legend>
-		<div class="row-fluid">
-			<div class="span5">
+		<div >
+			<div class="col-md-6">				
 				<?php
 				echo $this->Form->input('name');
 				echo $this->Form->input('url', array('type' => 'text'));
@@ -32,7 +32,7 @@
 				endif;
 				?>
 			</div>
-			<div class="span5">
+			<div class="col-md-6">
 				<?php
 				echo $this->Form->input('published', array('type' => 'hidden', 'value' => Configure::read('zero_datetime')));
 				echo $this->Form->input('deleted', array('type' => 'hidden', 'value' => Configure::read('zero_datetime')));
